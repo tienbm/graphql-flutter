@@ -36,9 +36,9 @@ class HiveStore extends Store {
   /// Opens a box. Convenience pass through to [Hive.openBox].
   ///
   /// If the box is already open, the instance is returned and all provided parameters are being ignored.
-  static Future<Box<Map<dynamic, dynamic>?>> openBox(String boxName,
+  static Future<Box<Map>> openBox(String boxName,
       {String? path}) async {
-    return await Hive.openBox<Map<dynamic, dynamic>?>(boxName, path: path);
+    return await Hive.openBox<Map>(boxName, path: path);
   }
 
   /// Convenience factory for `HiveStore(await openBox(boxName ?? 'graphqlClientStore', path: path))`
@@ -66,7 +66,7 @@ class HiveStore extends Store {
   /// This lets us decouple the async initialization logic, making store usage elsewhere much more straightforward.
   ///
   /// [opened]: https://docs.hivedb.dev/#/README?id=open-a-box
-  HiveStore([Box<Map<dynamic, dynamic>?>? box])
+  HiveStore([Box<Map>? box])
       : this.box = box ?? Hive.box<Map<dynamic, dynamic>?>(defaultBoxName);
 
   @override
