@@ -67,7 +67,7 @@ class HiveStore extends Store {
   ///
   /// [opened]: https://docs.hivedb.dev/#/README?id=open-a-box
   HiveStore([Box<Map>? box])
-      : this.box = box ?? Hive.box<Map<dynamic, dynamic>?>(defaultBoxName);
+      : this.box = box ?? Hive.box<Map>(defaultBoxName);
 
   @override
   Map<String, dynamic>? get(String dataId) {
